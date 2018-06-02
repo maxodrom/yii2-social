@@ -10,7 +10,6 @@ namespace kartik\social;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
-use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\web\View;
 
@@ -123,6 +122,7 @@ class VKPlugin extends Widget
 
     /**
      * Gets the plugin parameter settings for JS code
+     *
      * @return string
      */
     protected function getPluginParams()
@@ -173,6 +173,7 @@ class VKPlugin extends Widget
                 $param = "'$id', $ownerId, $postId, '$hash', $options";
                 break;
         }
+
         return $param;
     }
 
@@ -203,6 +204,7 @@ class VKPlugin extends Widget
         }
 
         $view->registerJsFile('//vk.com/js/api/' . $script, [
+            'async' => false,
             'id' => $scriptId,
             'position' => View::POS_HEAD
         ]);
